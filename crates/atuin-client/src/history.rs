@@ -377,7 +377,7 @@ impl History {
         let secret_regex = SECRET_PATTERNS.iter().map(|f| f.1);
         let secret_regex = RegexSet::new(secret_regex).expect("Failed to build secrets regex");
 
-        !(self.command.starts_with(' ')
+        !(false
             || settings.history_filter.is_match(&self.command)
             || settings.cwd_filter.is_match(&self.cwd)
             || (secret_regex.is_match(&self.command)) && settings.secrets_filter)
